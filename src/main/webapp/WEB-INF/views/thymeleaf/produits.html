@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Produits</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<h1>Produits</h1>
+<table class="table">
+    <tr><th colspan="5" ><a th:href="@{'addProduit'}"  class="btn btn-dark">Ajouter</a></th></tr>
+    <tr>
+        <th>Nom</th>
+        <th>Prix</th>
+        <th>Quantité</th>
+        <th>Action 1</th>
+        <th>Action 2</th>
+    </tr>
+    <tr th:each="produit : ${produits}">
+        <td th:text="${produit.nom}"></td>
+        <td th:text="${produit.prix}"></td>
+        <td th:text="${produit.quantite}"></td>
+        <td><a th:href="@{/editProduit/{id}(id=${produit.id})}" class="btn btn-dark">Edit</a></td>
+        <td><a onclick="return confirm('tes-vous sur ?')" th:href="@{/deleteProduit/{id}(id=${produit.id})}" class="btn btn-dark">Supprimer</a></td>
+    </tr>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"  crossorigin="anonymous"></script>
+</body>
+</html>
